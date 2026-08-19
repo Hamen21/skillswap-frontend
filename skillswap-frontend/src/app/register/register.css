@@ -1,0 +1,193 @@
+.register-page {
+  min-height: 100vh;
+  background: #f7f7fb;
+  font-family: Arial, sans-serif;
+  color: #172033;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 35px 30px 60px;
+}
+
+.register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: #5b4bdb;
+}
+
+.register-header p {
+  color: #666;
+}
+
+.register-header a {
+  color: #5b4bdb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* Progress */
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.progress-step {
+  text-align: center;
+  color: #aaa;
+}
+
+.progress-step span {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 50%;
+  background: #e5e5ec;
+  font-weight: bold;
+}
+
+.progress-step p {
+  font-size: 13px;
+}
+
+.progress-step.active {
+  color: #5b4bdb;
+}
+
+.progress-step.active span {
+  background: #5b4bdb;
+  color: white;
+}
+
+.progress-line {
+  width: 120px;
+  height: 2px;
+  background: #ddd;
+  margin: 0 15px;
+}
+
+
+/* Form */
+
+.form-container {
+  background: white;
+  padding: 45px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+.form-title {
+  margin-bottom: 35px;
+}
+
+.tagline {
+  color: #5b4bdb;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.form-title h1 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.form-title p:last-child {
+  color: #777;
+}
+
+
+/* Inputs */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #5b4bdb;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+/* Button */
+
+.continue-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #5b4bdb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.continue-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .register-container {
+    padding: 25px 15px;
+  }
+
+  .register-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-container {
+    padding: 25px;
+  }
+
+  .progress-line {
+    width: 40px;
+  }
+
+}
