@@ -10,7 +10,7 @@
       </div>
 
       <p>Already have an account?
-        <a href="/login">Login</a>
+        <a routerLink="/login">Login</a>
       </p>
 
     </div>
@@ -59,7 +59,7 @@
       </div>
 
 
-      <form>
+      <form (ngSubmit)="continueToEducation()">
 
         <!-- Name -->
         <div class="form-group">
@@ -69,10 +69,13 @@
           </label>
 
           <input
-            type="text"
-            id="name"
-            placeholder="Enter your full name"
-            required
+  type="text"
+  id="name"
+  name="name"
+  [(ngModel)]="user.name"
+  placeholder="Enter your full name"
+  required
+
           >
 
         </div>
@@ -86,11 +89,13 @@
           </label>
 
           <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          >
+  type="email"
+  id="email"
+  name="email"
+  [(ngModel)]="user.email"
+  placeholder="Enter your email"
+  required
+>
 
         </div>
 
@@ -101,13 +106,15 @@
           <label for="phone">
             Phone Number
           </label>
-
-          <input
-            type="tel"
-            id="phone"
-            placeholder="Enter your phone number"
-            required
-          >
+<input
+  type="tel"
+  id="phone"
+  name="phone"
+  [(ngModel)]="user.phone"
+  placeholder="Enter your phone number"
+  required
+>
+          
 
         </div>
 
@@ -120,10 +127,12 @@
           </label>
 
           <input
-            type="text"
-            id="location"
-            placeholder="City, State"
-          >
+  type="text"
+  id="location"
+  name="location"
+  [(ngModel)]="user.location"
+  placeholder="City, State"
+>
 
         </div>
 
@@ -136,24 +145,28 @@
           </label>
 
           <textarea
-            id="bio"
-            rows="4"
-            placeholder="Tell other SkillSwap users about yourself..."
-          ></textarea>
+  id="bio"
+  name="bio"
+  [(ngModel)]="user.bio"
+  rows="4"
+  placeholder="Tell other SkillSwap users about yourself..."
+></textarea>
 
         </div>
-
-
         <!-- Continue -->
-        <button
-          type="submit"
-          class="continue-btn">
+<button
+  type="submit"
+  class="continue-btn">
+  Continue to Education →
+</button>
 
-          Continue to Education →
+</form>
 
-        </button>
 
-      </form>
+
+         
+
+    
 
     </div>
 
