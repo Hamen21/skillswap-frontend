@@ -3,13 +3,11 @@
   <div class="skills-container">
 
     <div class="skills-header">
-
       <div class="logo">
         Skill<span>Swap</span>
       </div>
 
       <p>STEP 03</p>
-
     </div>
 
     <div class="form-container">
@@ -20,18 +18,53 @@
         Tell us what you can teach and what you want to learn.
       </p>
 
+      <!-- TEACH SKILLS -->
+
       <div class="form-group">
 
         <label for="teach">
           Skills You Can Teach
         </label>
 
-        <input
-          type="text"
-          id="teach"
-          placeholder="e.g. Java, Python, Photoshop">
+        <div class="skill-input">
+
+          <input
+            type="text"
+            id="teach"
+            [(ngModel)]="teachInput"
+            (keyup.enter)="addTeachSkill()"
+            placeholder="e.g. Java, Python, Photoshop">
+
+          <button
+            type="button"
+            (click)="addTeachSkill()">
+            Add
+          </button>
+
+        </div>
+
+        <div class="skill-list">
+
+          <span
+            class="skill-tag"
+            *ngFor="let skill of teachSkills; let i = index">
+
+            {{ skill }}
+
+            <button
+              type="button"
+              (click)="removeTeachSkill(i)">
+              ×
+            </button>
+
+          </span>
+
+        </div>
 
       </div>
+
+
+      <!-- LEARN SKILLS -->
 
       <div class="form-group">
 
@@ -39,18 +72,51 @@
           Skills You Want To Learn
         </label>
 
-        <input
-          type="text"
-          id="learn"
-          placeholder="e.g. Web Development, UI/UX">
+        <div class="skill-input">
+
+          <input
+            type="text"
+            id="learn"
+            [(ngModel)]="learnInput"
+            (keyup.enter)="addLearnSkill()"
+            placeholder="e.g. Web Development, UI/UX">
+
+          <button
+            type="button"
+            (click)="addLearnSkill()">
+            Add
+          </button>
+
+        </div>
+
+        <div class="skill-list">
+
+          <span
+            class="skill-tag"
+            *ngFor="let skill of learnSkills; let i = index">
+
+            {{ skill }}
+
+            <button
+              type="button"
+              (click)="removeLearnSkill(i)">
+              ×
+            </button>
+
+          </span>
+
+        </div>
 
       </div>
+
 
       <button
         type="button"
         class="continue-btn"
         routerLink="/dashboard">
+
         Complete Profile →
+
       </button>
 
     </div>
