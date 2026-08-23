@@ -7,10 +7,11 @@
     </div>
 
     <nav>
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/skills">My Skills</a>
-      <a routerLink="/">Logout</a>
-    </nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/skills">My Skills</a>
+  <a routerLink="/profile">Profile</a>
+  <a routerLink="/">Logout</a>
+</nav>
 
   </header>
 
@@ -82,19 +83,25 @@
 
     <section class="profile-section">
 
-      <h2>Your Profile</h2>
+     
 
-      <p>
-        Complete your profile to get better skill matches.
-      </p>
+  <h2>Your Profile</h2>
 
-      <div class="profile-progress">
-        <div class="progress-bar"></div>
-      </div>
+  <p>
+    Complete your profile to get better skill matches.
+  </p>
 
-      <span>Profile completed</span>
+  <div class="profile-progress">
+    <div class="progress-bar"></div>
+  </div>
 
-    </section>
+  <span>Profile completed</span>
+
+  <button routerLink="/profile">
+    View Profile
+  </button>
+
+</section>
 
   </main>
 

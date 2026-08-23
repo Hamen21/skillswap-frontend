@@ -1,1 +1,163 @@
-<p>profile works!</p>
+<div class="profile-page">
+
+  <header class="profile-header">
+
+    <div class="logo">
+      Skill<span>Swap</span>
+    </div>
+
+    <a routerLink="/dashboard">
+      ← Dashboard
+    </a>
+
+  </header>
+
+
+  <main class="profile-content">
+
+    <div class="profile-card">
+
+      <div class="profile-avatar">
+        H
+      </div>
+
+      <h1>{{ name }}</h1>
+
+      <p class="profile-subtitle">
+        Your SkillSwap learning profile
+      </p>
+
+
+      <!-- NAME -->
+
+      <div class="profile-section" *ngIf="editing">
+
+        <h2>✏️ Name</h2>
+
+        <input
+          type="text"
+          [(ngModel)]="name"
+          placeholder="Enter your name">
+
+      </div>
+
+
+      <!-- ABOUT ME -->
+
+      <div class="profile-section">
+
+        <h2>👤 About Me</h2>
+
+        <p *ngIf="!editing">
+          {{ bio }}
+        </p>
+
+        <textarea
+          *ngIf="editing"
+          [(ngModel)]="bio"
+          rows="4"
+          placeholder="Tell people about yourself">
+        </textarea>
+
+      </div>
+
+
+      <!-- EDUCATION -->
+
+      <div class="profile-section">
+
+        <h2>🎓 Education</h2>
+
+        <p *ngIf="!editing">
+          {{ education }}
+        </p>
+
+        <input
+          *ngIf="editing"
+          type="text"
+          [(ngModel)]="education"
+          placeholder="Enter your education">
+
+      </div>
+
+
+      <!-- TEACH SKILLS -->
+
+     <div class="profile-section">
+
+  <h2>🧠 Skills I Can Teach</h2>
+
+  <div class="profile-tags">
+
+    <span *ngFor="let skill of teachSkills">
+      {{ skill }}
+    </span>
+
+  </div>
+
+  <div class="skill-edit" *ngIf="editing">
+
+    <input
+      type="text"
+      [(ngModel)]="newTeachSkill"
+      placeholder="Add a skill">
+
+    <button
+      type="button"
+      (click)="addTeachSkill()">
+      Add
+    </button>
+
+  </div>
+
+</div>
+
+
+      <!-- LEARN SKILLS -->
+
+      <div class="profile-section">
+
+  <h2>📚 Skills I Want To Learn</h2>
+
+  <div class="profile-tags">
+
+    <span *ngFor="let skill of learnSkills">
+      {{ skill }}
+    </span>
+
+  </div>
+
+  <div class="skill-edit" *ngIf="editing">
+
+    <input
+      type="text"
+      [(ngModel)]="newLearnSkill"
+      placeholder="Add a skill">
+
+    <button
+      type="button"
+      (click)="addLearnSkill()">
+      Add
+    </button>
+
+  </div>
+
+</div>
+
+
+      <!-- EDIT BUTTON -->
+
+      <button
+        type="button"
+        class="edit-btn"
+        (click)="toggleEdit()">
+
+        {{ editing ? 'Save Profile' : 'Edit Profile' }}
+
+      </button>
+
+    </div>
+
+  </main>
+
+</div>
