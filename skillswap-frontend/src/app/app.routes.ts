@@ -35,6 +35,16 @@ export const routes: Routes = [
   path: 'dashboard',
   loadComponent: () =>
     import('./dashboard/dashboard').then(m => m.Dashboard)
+},
+{
+  path: 'find-skills',
+  loadComponent: () =>
+    import('./find-skills/find-skills').then(m => m.FindSkills)
+},
+{
+  path: 'profile',
+  loadComponent: () =>
+    import('./profile/profile').then(m => m.Profile)
 }
 
 ];

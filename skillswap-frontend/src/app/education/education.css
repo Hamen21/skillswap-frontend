@@ -1,0 +1,110 @@
+.education-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-container {
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  padding: 45px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.education-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.logo span {
+  color: #6366f1;
+}
+
+.education-header p {
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.form-container h1 {
+  margin-bottom: 10px;
+  font-size: 36px;
+  color: #111827;
+}
+
+.form-container > p {
+  color: #6b7280;
+  margin-bottom: 35px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #6366f1;
+}
+
+.continue-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.continue-btn:hover {
+  background: #6366f1;
+}
+
+@media (max-width: 600px) {
+  .education-container {
+    width: 85%;
+    padding: 30px 25px;
+  }
+
+  .education-header {
+    margin-bottom: 30px;
+  }
+
+  .form-container h1 {
+    font-size: 28px;
+  }
+}

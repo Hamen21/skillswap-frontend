@@ -1,0 +1,77 @@
+<div class="find-skills-page">
+
+  <header class="find-header">
+
+    <div class="logo">
+      Skill<span>Swap</span>
+    </div>
+
+    <a routerLink="/dashboard">
+      ← Dashboard
+    </a>
+
+  </header>
+
+
+  <main class="find-content">
+
+    <div class="page-heading">
+
+      <p>SKILLSWAP COMMUNITY</p>
+
+      <h1>Find People 🤝</h1>
+
+      <span>
+        Discover people who can teach the skills you want to learn.
+      </span>
+
+    </div>
+
+<div class="search-box">
+
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    placeholder="Search by skill...">
+
+</div>
+    <div class="people-grid">
+
+      <div class="person-card" *ngFor="let person of filteredPeople">
+
+        <div class="avatar">
+          {{ person.name.charAt(0) }}
+        </div>
+
+        <h2>{{ person.name }}</h2>
+
+        <p class="teach-label">
+          Can teach
+        </p>
+
+        <h3>{{ person.teaches }}</h3>
+
+        <div class="skills-list">
+
+          <span *ngFor="let skill of person.skills">
+            {{ skill }}
+          </span>
+
+        </div>
+
+        <button
+  type="button"
+  (click)="connect(person)"
+  [disabled]="person.connected">
+
+  {{ person.connected ? 'Request Sent ✓' : 'Connect' }}
+
+</button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

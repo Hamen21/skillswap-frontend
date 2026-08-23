@@ -1,0 +1,161 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.dashboard-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.logo span {
+  color: #6366f1;
+}
+
+.dashboard-header nav {
+  display: flex;
+  gap: 25px;
+}
+
+.dashboard-header nav a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.dashboard-header nav a:hover {
+  color: #6366f1;
+}
+
+.dashboard-content {
+  width: 85%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.welcome-section {
+  margin-bottom: 45px;
+}
+
+.tagline {
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.welcome-section h1 {
+  font-size: 40px;
+  color: #111827;
+  margin: 10px 0;
+}
+
+.welcome-section p:last-child {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-card h2 {
+  color: #111827;
+  margin-top: 0;
+}
+
+.dashboard-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.dashboard-card button {
+  margin-top: 15px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dashboard-card button:hover {
+  background: #6366f1;
+}
+
+.profile-section {
+  margin-top: 35px;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.profile-section h2 {
+  color: #111827;
+}
+
+.profile-section p {
+  color: #6b7280;
+}
+
+.profile-progress {
+  width: 100%;
+  height: 10px;
+  margin: 20px 0 10px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 60%;
+  height: 100%;
+  background: #6366f1;
+}
+
+.profile-section span {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-content {
+    width: 90%;
+  }
+
+  .dashboard-header {
+    padding: 0 5%;
+  }
+
+  .dashboard-header nav {
+    gap: 12px;
+  }
+}

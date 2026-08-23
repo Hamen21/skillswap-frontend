@@ -53,3 +53,22 @@
   line-height: 16px;
   padding: 0;
 }
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.logo span {
+  color: #6366f1;
+}
+
+.skills-header p {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
