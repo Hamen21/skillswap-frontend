@@ -1,0 +1,79 @@
+<div class="connections-page">
+
+  <header class="connections-header">
+
+    <div class="logo">
+      Skill<span>Swap</span>
+    </div>
+
+    <a routerLink="/dashboard">
+      ← Dashboard
+    </a>
+
+  </header>
+
+
+  <main class="connections-content">
+
+    <div class="page-heading">
+
+      <p>SKILLSWAP COMMUNITY</p>
+
+      <h1>My Connections 🔗</h1>
+
+      <span>
+        People you have connected with on SkillSwap.
+      </span>
+
+    </div>
+
+
+    <div
+      class="empty-state"
+      *ngIf="connections.length === 0">
+
+      <h2>No connections yet</h2>
+
+      <p>
+        Find people and send a connection request to start building
+        your SkillSwap network.
+      </p>
+
+      <button routerLink="/find-skills">
+        Find People
+      </button>
+
+    </div>
+
+
+    <div
+      class="connections-grid"
+      *ngIf="connections.length > 0">
+
+      <div
+        class="connection-card"
+        *ngFor="let connection of connections">
+
+        <div class="connection-avatar">
+          {{ connection.charAt(0) }}
+        </div>
+
+        <h2>{{ connection }}</h2>
+
+        <p>
+          SkillSwap Connection
+        </p>
+
+        <button
+          type="button"
+          (click)="removeConnection(connection)">
+          Remove Connection
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

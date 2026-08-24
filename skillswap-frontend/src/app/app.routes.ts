@@ -45,6 +45,16 @@ export const routes: Routes = [
   path: 'profile',
   loadComponent: () =>
     import('./profile/profile').then(m => m.Profile)
+},
+{
+  path: 'requests',
+  loadComponent: () =>
+    import('./requests/requests').then(m => m.Requests)
+},
+{
+  path: 'connections',
+  loadComponent: () =>
+    import('./connections/connections').then(m => m.Connections)
 }
 
 ];

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SkillSwapService } from '../services/skill-swap';
 
 @Component({
   selector: 'app-find-skills',
@@ -36,33 +37,43 @@ export class FindSkills {
 
   connections: string[] = [];
 
-  constructor() {
-    const saved = localStorage.getItem('skillswapConnections');
-
-    if (saved) {
-      this.connections = JSON.parse(saved);
-    }
-
+  constructor(private skillSwapService: SkillSwapService) {
     this.loadConnections();
   }
 
-  connect(person: any) {
+ connect(person: any) {
+
+  const requests =
+    this.skillSwapService.getRequests();
+
+  const existingRequest = requests.find(
+    (request: any) => request.name === person.name
+  );
+
+  // Already accepted
+  if (existingRequest?.status === 'accepted') {
+    return;
+  }
+
+  // Send a new request if rejected or doesn't exist
+  if (!existingRequest || existingRequest.status === 'rejected') {
+
+    this.skillSwapService.addRequest({
+      name: person.name,
+      skill: person.teaches,
+      status: 'pending'
+    });
 
     person.connected = true;
 
-    if (!this.connections.includes(person.name)) {
-
-      this.connections.push(person.name);
-
-      localStorage.setItem(
-        'skillswapConnections',
-        JSON.stringify(this.connections)
-      );
-
-    }
   }
 
+}
+
   loadConnections() {
+
+    this.connections =
+      this.skillSwapService.getConnections();
 
     this.people.forEach(person => {
 
@@ -76,30 +87,16 @@ export class FindSkills {
 
   removeConnection(name: string) {
 
-    this.connections = this.connections.filter(
-      connection => connection !== name
-    );
+    this.skillSwapService.removeConnection(name);
 
-    localStorage.setItem(
-      'skillswapConnections',
-      JSON.stringify(this.connections)
-    );
-
-    const person = this.people.find(
-      person => person.name === name
-    );
-
-    if (person) {
-      person.connected = false;
-    }
+    this.loadConnections();
 
   }
 
   get filteredPeople() {
 
-    const search = this.searchText
-      .toLowerCase()
-      .trim();
+    const search =
+      this.searchText.toLowerCase().trim();
 
     if (!search) {
       return this.people;

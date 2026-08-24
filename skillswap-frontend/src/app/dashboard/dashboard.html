@@ -9,6 +9,16 @@
     <nav>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/skills">My Skills</a>
+  <a routerLink="/find-skills">Find People</a>
+  <a routerLink="/requests">
+  Requests
+
+  <span
+    *ngIf="pendingRequests > 0"
+    class="request-badge">
+    {{ pendingRequests }}
+  </span>
+</a>
   <a routerLink="/profile">Profile</a>
   <a routerLink="/">Logout</a>
 </nav>
@@ -66,7 +76,19 @@
 
       <div class="dashboard-card">
 
-        <h2>🤝 Find People</h2>
+  <h2>🔗 My Connections</h2>
+
+  <p>
+    You have
+    <strong>{{ connectionCount }}</strong>
+    connection{{ connectionCount === 1 ? '' : 's' }}.
+  </p>
+
+  <button routerLink="/connections">
+    View Connections
+  </button>
+
+</div>
 
         <p>
           Discover people who can teach what you want to learn.

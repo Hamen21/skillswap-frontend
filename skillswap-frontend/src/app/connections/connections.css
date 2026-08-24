@@ -1,0 +1,150 @@
+.connections-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.connections-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.logo span {
+  color: #6366f1;
+}
+
+.connections-header a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.connections-content {
+  width: 85%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.page-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.page-heading p {
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.page-heading h1 {
+  margin: 10px 0;
+  font-size: 40px;
+  color: #111827;
+}
+
+.page-heading span {
+  color: #6b7280;
+}
+
+.connections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.connection-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.connection-avatar {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #6366f1;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.connection-card h2 {
+  color: #111827;
+  margin: 10px 0;
+}
+
+.connection-card p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.connection-card button,
+.empty-state button {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.connection-card button:hover,
+.empty-state button:hover {
+  background: #6366f1;
+}
+
+.empty-state {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px 30px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.empty-state h2 {
+  color: #111827;
+}
+
+.empty-state p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 800px) {
+
+  .connections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .connections-content {
+    width: 90%;
+  }
+
+  .page-heading h1 {
+    font-size: 32px;
+  }
+
+}
