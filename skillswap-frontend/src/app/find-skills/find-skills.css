@@ -178,3 +178,45 @@
 .search-box input::placeholder {
   color: #9ca3af;
 }
+.connections-section {
+  margin-top: 50px;
+  padding: 30px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.connections-section h2 {
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.connection-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.connection-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #111827;
+  font-weight: 600;
+}
+
+.connection-avatar {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #6366f1;
+  color: white;
+  font-weight: 700;
+}

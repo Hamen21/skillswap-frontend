@@ -141,4 +141,22 @@
   .profile-card > h1 {
     font-size: 28px;
   }
+  .profile-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-tags button {
+  border: none;
+  background: transparent;
+  color: #ff4d4d;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.profile-tags button:hover {
+  color: #cc0000;
+}
 }

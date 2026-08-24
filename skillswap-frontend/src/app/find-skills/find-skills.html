@@ -12,7 +12,6 @@
 
   </header>
 
-
   <main class="find-content">
 
     <div class="page-heading">
@@ -27,17 +26,26 @@
 
     </div>
 
-<div class="search-box">
 
-  <input
-    type="text"
-    [(ngModel)]="searchText"
-    placeholder="Search by skill...">
+    <!-- SEARCH -->
 
-</div>
+    <div class="search-box">
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search by skill...">
+
+    </div>
+
+
+    <!-- PEOPLE -->
+
     <div class="people-grid">
 
-      <div class="person-card" *ngFor="let person of filteredPeople">
+      <div
+        class="person-card"
+        *ngFor="let person of filteredPeople">
 
         <div class="avatar">
           {{ person.name.charAt(0) }}
@@ -60,17 +68,54 @@
         </div>
 
         <button
-  type="button"
-  (click)="connect(person)"
-  [disabled]="person.connected">
+          type="button"
+          (click)="connect(person)"
+          [disabled]="person.connected">
 
-  {{ person.connected ? 'Request Sent ✓' : 'Connect' }}
+          {{ person.connected ? 'Request Sent ✓' : 'Connect' }}
 
-</button>
+        </button>
 
       </div>
 
     </div>
+
+
+    <!-- MY CONNECTIONS -->
+
+    <section
+      class="connections-section"
+      *ngIf="connections.length > 0">
+
+      <h2>🤝 My Connections</h2>
+
+      <div class="connection-list">
+
+        <div
+          class="connection-card"
+          *ngFor="let connection of connections">
+
+          <div class="connection-avatar">
+            {{ connection.charAt(0) }}
+          </div>
+
+          <span>
+            {{ connection }}
+          </span>
+
+          <button
+            type="button"
+            (click)="removeConnection(connection)">
+
+            Remove
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </main>
 

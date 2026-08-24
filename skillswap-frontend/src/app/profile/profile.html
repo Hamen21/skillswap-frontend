@@ -89,9 +89,16 @@
 
   <div class="profile-tags">
 
-    <span *ngFor="let skill of teachSkills">
-      {{ skill }}
-    </span>
+   <span *ngFor="let skill of teachSkills">
+  {{ skill }}
+
+  <button
+    *ngIf="editing"
+    type="button"
+    (click)="deleteTeachSkill(skill)">
+    ✕
+  </button>
+</span>
 
   </div>
 
@@ -121,9 +128,16 @@
 
   <div class="profile-tags">
 
-    <span *ngFor="let skill of learnSkills">
-      {{ skill }}
-    </span>
+   <span *ngFor="let skill of learnSkills">
+  {{ skill }}
+
+  <button
+    *ngIf="editing"
+    type="button"
+    (click)="deleteLearnSkill(skill)">
+    ✕
+  </button>
+</span>
 
   </div>
 

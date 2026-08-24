@@ -45,5 +45,12 @@ addLearnSkill() {
     this.newLearnSkill = '';
   }
 }
+deleteTeachSkill(skill: string) {
+  this.teachSkills = this.teachSkills.filter(s => s !== skill);
+}
+
+deleteLearnSkill(skill: string) {
+  this.learnSkills = this.learnSkills.filter(s => s !== skill);
+}
 
 }
