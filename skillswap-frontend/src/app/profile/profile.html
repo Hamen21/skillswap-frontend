@@ -18,7 +18,7 @@
     <div class="profile-card">
 
       <div class="profile-avatar">
-        H
+        {{ name.charAt(0).toUpperCase() }}
       </div>
 
       <h1>{{ name }}</h1>
@@ -30,7 +30,9 @@
 
       <!-- NAME -->
 
-      <div class="profile-section" *ngIf="editing">
+      <div
+        class="profile-section"
+        *ngIf="editing">
 
         <h2>✏️ Name</h2>
 
@@ -49,7 +51,7 @@
         <h2>👤 About Me</h2>
 
         <p *ngIf="!editing">
-          {{ bio }}
+          {{ bio || 'No introduction added yet.' }}
         </p>
 
         <textarea
@@ -67,99 +69,158 @@
       <div class="profile-section">
 
         <h2>🎓 Education</h2>
+        
 
-        <p *ngIf="!editing">
-          {{ education }}
-        </p>
 
-        <input
-          *ngIf="editing"
-          type="text"
-          [(ngModel)]="education"
-          placeholder="Enter your education">
+
+        <!-- View Mode -->
+
+        <div *ngIf="!editing">
+
+          <p>
+            <strong>College:</strong>
+            {{ education.college || 'Not added' }}
+          </p>
+
+          <p>
+            <strong>Degree:</strong>
+            {{ education.degree || 'Not added' }}
+          </p>
+
+          <p>
+            <strong>Year:</strong>
+            {{ education.year || 'Not added' }}
+          </p>
+
+          <p>
+            <strong>Specialization:</strong>
+            {{ education.specialization || 'Not added' }}
+          </p>
+
+        </div>
+
+
+        <!-- Edit Mode -->
+
+        <div *ngIf="editing">
+
+          <input
+            type="text"
+            [(ngModel)]="education.college"
+            placeholder="College name">
+
+
+          <input
+            type="text"
+            [(ngModel)]="education.degree"
+            placeholder="Degree">
+
+
+          <input
+            type="text"
+            [(ngModel)]="education.year"
+            placeholder="Year">
+
+
+          <input
+            type="text"
+            [(ngModel)]="education.specialization"
+            placeholder="Specialization">
+
+        </div>
 
       </div>
 
 
       <!-- TEACH SKILLS -->
 
-     <div class="profile-section">
+      <div class="profile-section">
 
-  <h2>🧠 Skills I Can Teach</h2>
+        <h2>🧠 Skills I Can Teach</h2>
 
-  <div class="profile-tags">
+        <div class="profile-tags">
 
-   <span *ngFor="let skill of teachSkills">
-  {{ skill }}
+          <span *ngFor="let skill of teachSkills">
 
-  <button
-    *ngIf="editing"
-    type="button"
-    (click)="deleteTeachSkill(skill)">
-    ✕
-  </button>
-</span>
+            {{ skill }}
 
-  </div>
+            <button
+              *ngIf="editing"
+              type="button"
+              (click)="deleteTeachSkill(skill)">
+              ✕
+            </button>
 
-  <div class="skill-edit" *ngIf="editing">
+          </span>
 
-    <input
-      type="text"
-      [(ngModel)]="newTeachSkill"
-      placeholder="Add a skill">
+        </div>
 
-    <button
-      type="button"
-      (click)="addTeachSkill()">
-      Add
-    </button>
 
-  </div>
+        <div
+          class="skill-edit"
+          *ngIf="editing">
 
-</div>
+          <input
+            type="text"
+            [(ngModel)]="newTeachSkill"
+            placeholder="Add a skill">
+
+          <button
+            type="button"
+            (click)="addTeachSkill()">
+            Add
+          </button>
+
+        </div>
+
+      </div>
 
 
       <!-- LEARN SKILLS -->
 
       <div class="profile-section">
 
-  <h2>📚 Skills I Want To Learn</h2>
+        <h2>📚 Skills I Want To Learn</h2>
 
-  <div class="profile-tags">
+        <div class="profile-tags">
 
-   <span *ngFor="let skill of learnSkills">
-  {{ skill }}
+          <span *ngFor="let skill of learnSkills">
 
-  <button
-    *ngIf="editing"
-    type="button"
-    (click)="deleteLearnSkill(skill)">
-    ✕
-  </button>
-</span>
+            {{ skill }}
 
-  </div>
+            <button
+              *ngIf="editing"
+              type="button"
+              (click)="deleteLearnSkill(skill)">
+              ✕
+            </button>
 
-  <div class="skill-edit" *ngIf="editing">
+          </span>
 
-    <input
-      type="text"
-      [(ngModel)]="newLearnSkill"
-      placeholder="Add a skill">
-
-    <button
-      type="button"
-      (click)="addLearnSkill()">
-      Add
-    </button>
-
-  </div>
-
-</div>
+        </div>
 
 
-      <!-- EDIT BUTTON -->
+        <div
+          class="skill-edit"
+          *ngIf="editing">
+
+          <input
+            type="text"
+            [(ngModel)]="newLearnSkill"
+            placeholder="Add a skill">
+
+          <button
+            type="button"
+            (click)="addLearnSkill()">
+            Add
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- EDIT / SAVE BUTTON -->
 
       <button
         type="button"

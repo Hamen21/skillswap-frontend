@@ -44,7 +44,7 @@
         </p>
 
 
-        <form>
+        <form (ngSubmit)="login()">
 
           <!-- EMAIL -->
 
@@ -57,6 +57,8 @@
             <input
               type="email"
               id="email"
+              name="email"
+              [(ngModel)]="user.email"
               placeholder="Enter your email"
               required
             >
@@ -83,6 +85,8 @@
             <input
               type="password"
               id="password"
+              name="password"
+              [(ngModel)]="user.password"
               placeholder="Enter your password"
               required
             >
@@ -125,8 +129,9 @@
           Don't have an account?
 
           <a routerLink="/register">
-  Create Account
-</a>
+            Create Account
+          </a>
+
         </p>
 
       </div>

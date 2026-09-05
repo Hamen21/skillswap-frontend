@@ -6,124 +6,188 @@
       Skill<span>Swap</span>
     </div>
 
-    <nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/skills">My Skills</a>
-  <a routerLink="/find-skills">Find People</a>
-  <a routerLink="/requests">
-  Requests
+    <nav class="dashboard-nav">
 
-  <span
-    *ngIf="pendingRequests > 0"
-    class="request-badge">
-    {{ pendingRequests }}
-  </span>
+      <a routerLink="/dashboard">
+        Dashboard
+      </a>
+
+      <a routerLink="/skills">
+        My Skills
+      </a>
+
+      <a routerLink="/find-skills">
+        Find People
+      </a>
+
+      <a routerLink="/requests">
+        Requests
+
+        <span
+          *ngIf="pendingRequests > 0"
+          class="request-badge">
+          {{ pendingRequests }}
+        </span>
+
+      </a>
+
+      <a routerLink="/connections">
+        Connections
+      </a>
+
+      <a routerLink="/profile">
+        Profile
+      </a>
+
+      <a href="#" (click)="logout(); $event.preventDefault()">
+  Logout
 </a>
-  <a routerLink="/profile">Profile</a>
-  <a routerLink="/">Logout</a>
-</nav>
+
+    </nav>
 
   </header>
 
 
   <main class="dashboard-content">
 
+    <!-- WELCOME -->
+
     <div class="welcome-section">
 
-      <p class="tagline">SKILLSWAP DASHBOARD</p>
+      <p>WELCOME BACK</p>
 
-      <h1>Welcome to SkillSwap 👋</h1>
+      <h1>
+        Hello, {{ name }} 👋
+      </h1>
+
+      <span>
+        Learn something new. Share what you know.
+      </span>
+
+    </div>
+
+
+    <!-- PROFILE SUMMARY -->
+
+    <div class="profile-summary">
+
+      <h2>About You</h2>
 
       <p>
-        Learn something new. Share what you know.
-        Connect with the right people.
+        {{ bio || 'Tell other SkillSwap users about yourself.' }}
       </p>
 
     </div>
 
 
-    <div class="dashboard-cards">
+    <!-- DASHBOARD GRID -->
+
+    <div class="dashboard-grid">
+
+
+      <!-- TEACH SKILLS -->
 
       <div class="dashboard-card">
 
-        <h2>🎓 My Skills</h2>
+        <h2>🎓 Skills I Can Teach</h2>
 
-        <p>
-          Manage the skills you can teach to other users.
-        </p>
+        <div class="skill-list">
 
-       <button routerLink="/find-skills">
-  Find Skills
-</button>
+          <span
+            *ngFor="let skill of teachSkills"
+            class="skill-tag">
 
-      </div>
+            {{ skill }}
 
+          </span>
 
-      <div class="dashboard-card">
+          <span
+            *ngIf="teachSkills.length === 0">
 
-        <h2>📚 Learning Goals</h2>
+            No teaching skills added yet.
 
-        <p>
-          View and update the skills you want to learn.
-        </p>
+          </span>
+
+        </div>
 
         <button routerLink="/skills">
-          My Learning Goals
+          Manage Skills
         </button>
 
       </div>
 
 
+      <!-- LEARN SKILLS -->
+
       <div class="dashboard-card">
 
-  <h2>🔗 My Connections</h2>
+        <h2>📚 Skills I Want To Learn</h2>
 
-  <p>
-    You have
-    <strong>{{ connectionCount }}</strong>
-    connection{{ connectionCount === 1 ? '' : 's' }}.
-  </p>
+        <div class="skill-list">
 
-  <button routerLink="/connections">
-    View Connections
-  </button>
+          <span
+            *ngFor="let skill of learnSkills"
+            class="skill-tag">
 
-</div>
+            {{ skill }}
 
-        <p>
-          Discover people who can teach what you want to learn.
-        </p>
+          </span>
 
-       <button routerLink="/find-skills">
-  Find Skills
-</button>
+          <span
+            *ngIf="learnSkills.length === 0">
+
+            No learning goals added yet.
+
+          </span>
+
+        </div>
+
+        <button routerLink="/skills">
+          View Goals
+        </button>
 
       </div>
 
+
+      <!-- FIND PEOPLE -->
+
+      <div class="dashboard-card">
+
+        <h2>🔍 Find People</h2>
+
+        <p>
+          Discover people who can teach you new skills.
+        </p>
+
+        <button routerLink="/find-skills">
+          Find People
+        </button>
+
+      </div>
+
+
+      <!-- CONNECTIONS -->
+
+      <div class="dashboard-card">
+
+        <h2>🔗 My Connections</h2>
+
+        <p>
+
+          You have
+          <strong>{{ connectionCount }}</strong>
+          connection{{ connectionCount === 1 ? '' : 's' }}.
+
+        </p>
+
+        <button routerLink="/connections">
+          View Connections
+        </button>
+
+      </div>
+
+
     </div>
-
-
-    <section class="profile-section">
-
-     
-
-  <h2>Your Profile</h2>
-
-  <p>
-    Complete your profile to get better skill matches.
-  </p>
-
-  <div class="profile-progress">
-    <div class="progress-bar"></div>
-  </div>
-
-  <span>Profile completed</span>
-
-  <button routerLink="/profile">
-    View Profile
-  </button>
-
-</section>
 
   </main>
 

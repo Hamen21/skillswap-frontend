@@ -3,12 +3,15 @@
   <div class="education-container">
 
     <div class="education-header">
+
       <div class="logo">
         Skill<span>Swap</span>
       </div>
 
       <p>STEP 02</p>
+
     </div>
+
 
     <div class="form-container">
 
@@ -18,56 +21,109 @@
         This helps SkillSwap understand your background.
       </p>
 
-      <form>
+
+      <form (ngSubmit)="continueToSkills()">
+
+
+        <!-- College -->
 
         <div class="form-group">
-          <label for="college">College / University</label>
+
+          <label for="college">
+            College / University
+          </label>
 
           <input
             type="text"
             id="college"
+            name="college"
+            [(ngModel)]="education.college"
             placeholder="Enter your college or university"
+            required
           >
+
         </div>
 
+
+        <!-- Degree -->
+
         <div class="form-group">
-          <label for="degree">Degree</label>
+
+          <label for="degree">
+            Degree
+          </label>
 
           <input
             type="text"
             id="degree"
+            name="degree"
+            [(ngModel)]="education.degree"
             placeholder="e.g. B.Tech Computer Science"
+            required
           >
+
         </div>
 
-        <div class="form-group">
-          <label for="year">Current Year</label>
 
-          <select id="year">
-            <option value="">Select your year</option>
+        <!-- Current Year -->
+
+        <div class="form-group">
+
+          <label for="year">
+            Current Year
+          </label>
+
+          <select
+            id="year"
+            name="year"
+            [(ngModel)]="education.year"
+            required
+          >
+
+            <option value="">
+              Select your year
+            </option>
+
             <option>1st Year</option>
             <option>2nd Year</option>
             <option>3rd Year</option>
             <option>4th Year</option>
+
           </select>
+
         </div>
 
+
+        <!-- Specialization -->
+
         <div class="form-group">
-          <label for="specialization">Specialization</label>
+
+          <label for="specialization">
+            Specialization
+          </label>
 
           <input
             type="text"
             id="specialization"
+            name="specialization"
+            [(ngModel)]="education.specialization"
             placeholder="e.g. Computer Science"
+            required
           >
+
         </div>
 
+
+        <!-- Continue -->
+
         <button
-          type="button"
-          class="continue-btn"
-          routerLink="/skills">
+          type="submit"
+          class="continue-btn">
+
           Continue to Skills →
+
         </button>
+
 
       </form>
 

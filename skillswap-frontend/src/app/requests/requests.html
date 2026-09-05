@@ -15,93 +15,140 @@
 
   <main class="requests-content">
 
+    <!-- PAGE HEADING -->
+
     <div class="page-heading">
 
       <p>SKILLSWAP COMMUNITY</p>
 
-      <h1>Connection Requests 🤝</h1>
+      <h1>
+        Connection Requests 🤝
+      </h1>
 
       <span>
         Manage people who want to connect with you.
       </span>
 
     </div>
+
+
+    <!-- FILTERS -->
+
     <div class="request-filters">
 
-  <button
-    type="button"
-    [class.active]="filter === 'all'"
-    (click)="filter = 'all'">
-    All
-  </button>
+      <button
+        type="button"
+        [class.active]="filter === 'all'"
+        (click)="filter = 'all'">
 
-  <button
-    type="button"
-    [class.active]="filter === 'pending'"
-    (click)="filter = 'pending'">
-    Pending
-  </button>
+        All
 
-  <button
-    type="button"
-    [class.active]="filter === 'accepted'"
-    (click)="filter = 'accepted'">
-    Accepted
-  </button>
-
-  <button
-    type="button"
-    [class.active]="filter === 'rejected'"
-    (click)="filter = 'rejected'">
-    Rejected
-  </button>
-
-</div>
+      </button>
 
 
-    <div class="requests-list">
+      <button
+        type="button"
+        [class.active]="filter === 'pending'"
+        (click)="filter = 'pending'">
+
+        Pending
+
+      </button>
+
+
+      <button
+        type="button"
+        [class.active]="filter === 'accepted'"
+        (click)="filter = 'accepted'">
+
+        Accepted
+
+      </button>
+
+
+      <button
+        type="button"
+        [class.active]="filter === 'rejected'"
+        (click)="filter = 'rejected'">
+
+        Rejected
+
+      </button>
+
+    </div>
+
+
+    <!-- REQUEST LIST -->
+
+    <div
+      class="requests-list"
+      *ngIf="filteredRequests.length > 0">
 
       <div
         class="request-card"
         *ngFor="let request of filteredRequests">
 
+
+        <!-- AVATAR -->
+
         <div class="request-avatar">
-          {{ request.name.charAt(0) }}
+
+          {{ request.name.charAt(0).toUpperCase() }}
+
         </div>
 
 
+        <!-- REQUEST INFORMATION -->
+
         <div class="request-info">
 
-          <h2>{{ request.name }}</h2>
+          <h2>
+            {{ request.name }}
+          </h2>
 
           <p>
             Wants to connect with you about
-            <strong>{{ request.skill }}</strong>
+            <strong>
+              {{ request.skill }}
+            </strong>
           </p>
 
         </div>
 
 
+        <!-- ACTIONS -->
+
         <div class="request-actions">
 
-          <ng-container *ngIf="request.status === 'pending'">
+
+          <!-- PENDING -->
+
+          <ng-container
+            *ngIf="request.status === 'pending'">
 
             <button
               class="accept-btn"
               type="button"
               (click)="acceptRequest(request)">
+
               Accept
+
             </button>
+
 
             <button
               class="reject-btn"
               type="button"
               (click)="rejectRequest(request)">
+
               Reject
+
             </button>
 
           </ng-container>
 
+
+          <!-- ACCEPTED -->
 
           <span
             class="request-status"
@@ -111,6 +158,8 @@
 
           </span>
 
+
+          <!-- REJECTED -->
 
           <span
             class="request-status rejected"
@@ -123,6 +172,23 @@
         </div>
 
       </div>
+
+    </div>
+
+
+    <!-- NO REQUESTS -->
+
+    <div
+      class="empty-state"
+      *ngIf="filteredRequests.length === 0">
+
+      <h2>
+        No {{ filter === 'all' ? '' : filter }} requests
+      </h2>
+
+      <p>
+        There are no connection requests in this category.
+      </p>
 
     </div>
 

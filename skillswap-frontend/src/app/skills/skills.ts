@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-skills',
@@ -16,6 +17,11 @@ export class Skills {
 
   teachInput = '';
   learnInput = '';
+
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   addTeachSkill() {
     const skill = this.teachInput.trim();
@@ -41,5 +47,52 @@ export class Skills {
 
   removeLearnSkill(index: number) {
     this.learnSkills.splice(index, 1);
+  }
+
+  saveSkills() {
+
+    const currentUser =
+      JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+    if (!currentUser.id) {
+      alert('Please login again.');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.apiService.updateSkills(
+      currentUser.id,
+      this.teachSkills,
+      this.learnSkills
+    ).subscribe({
+
+      next: (response) => {
+
+        console.log(
+          'Skills saved successfully:',
+          response
+        );
+
+        alert('Skills saved successfully!');
+
+        this.router.navigate(['/dashboard']);
+
+      },
+
+      error: (error) => {
+
+        console.error(
+          'Skills save failed:',
+          error
+        );
+
+        alert(
+          error.error?.message ||
+          'Failed to save skills'
+        );
+
+      }
+
+    });
   }
 }

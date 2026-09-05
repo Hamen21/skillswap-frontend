@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { SkillSwapService } from '../services/skill-swap';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-connections',
@@ -11,34 +11,115 @@ import { SkillSwapService } from '../services/skill-swap';
 })
 export class Connections {
 
-  connections: string[] = [];
+  connections: any[] = [];
 
   constructor(
-    private skillSwapService: SkillSwapService
+    private apiService: ApiService,
+    private changeDetector: ChangeDetectorRef
   ) {
     this.loadConnections();
   }
 
   loadConnections() {
 
-    this.connections =
-      this.skillSwapService.getConnections();
+    const currentUser =
+      JSON.parse(
+        localStorage.getItem('currentUser') || '{}'
+      );
+
+    if (!currentUser.id) {
+
+      alert('Please login again.');
+
+      return;
+
+    }
+
+    this.apiService
+      .getConnections(currentUser.id)
+      .subscribe({
+
+        next: (connections: any) => {
+
+         
+
+          this.connections = connections;
+
+
+          this.changeDetector.detectChanges();
+
+        },
+
+        error: (error) => {
+
+          console.error(
+            'Failed to load connections:',
+            error
+          );
+
+        }
+
+      });
 
   }
 
-  removeConnection(name: string) {
 
-    const confirmed = confirm(
-      `Are you sure you want to remove ${name} from your connections?`
-    );
+  removeConnection(connection: any) {
+
+    const confirmed =
+      confirm(
+        `Are you sure you want to remove ${connection.name} from your connections?`
+      );
 
     if (!confirmed) {
       return;
     }
 
-    this.skillSwapService.removeConnection(name);
+    const currentUser =
+      JSON.parse(
+        localStorage.getItem('currentUser') || '{}'
+      );
 
-    this.loadConnections();
+    if (!currentUser.id) {
+
+      alert('Please login again.');
+
+      return;
+
+    }
+
+    this.apiService
+      .removeConnection(
+        currentUser.id,
+        connection._id
+      )
+      .subscribe({
+
+        next: () => {
+
+          alert(
+            'Connection removed successfully.'
+          );
+
+          this.loadConnections();
+
+        },
+
+        error: (error) => {
+
+          console.error(
+            'Failed to remove connection:',
+            error
+          );
+
+          alert(
+            error.error?.message ||
+            'Failed to remove connection'
+          );
+
+        }
+
+      });
 
   }
 

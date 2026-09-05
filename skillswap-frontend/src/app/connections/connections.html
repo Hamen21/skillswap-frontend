@@ -15,11 +15,15 @@
 
   <main class="connections-content">
 
+    <!-- PAGE HEADING -->
+
     <div class="page-heading">
 
       <p>SKILLSWAP COMMUNITY</p>
 
-      <h1>My Connections 🔗</h1>
+      <h1>
+        My Connections 🔗
+      </h1>
 
       <span>
         People you have connected with on SkillSwap.
@@ -28,23 +32,7 @@
     </div>
 
 
-    <div
-      class="empty-state"
-      *ngIf="connections.length === 0">
-
-      <h2>No connections yet</h2>
-
-      <p>
-        Find people and send a connection request to start building
-        your SkillSwap network.
-      </p>
-
-      <button routerLink="/find-skills">
-        Find People
-      </button>
-
-    </div>
-
+    <!-- CONNECTIONS -->
 
     <div
       class="connections-grid"
@@ -54,23 +42,87 @@
         class="connection-card"
         *ngFor="let connection of connections">
 
+
+        <!-- AVATAR -->
+
         <div class="connection-avatar">
-          {{ connection.charAt(0) }}
+
+          {{ connection.name?.charAt(0).toUpperCase() }}
+
         </div>
 
-        <h2>{{ connection }}</h2>
+
+        <!-- NAME -->
+
+        <h2>
+          {{ connection.name }}
+        </h2>
+
+
+        <!-- EMAIL -->
+
+        <p>
+          {{ connection.email }}
+        </p>
+
 
         <p>
           SkillSwap Connection
         </p>
 
+
+        <!-- MESSAGE BUTTON -->
+
         <button
           type="button"
-          (click)="removeConnection(connection)">
-          Remove Connection
+          class="message-btn"
+          [routerLink]="['/chat', connection._id]">
+
+          💬 Message
+
         </button>
 
+
+        <!-- REMOVE BUTTON -->
+
+        <button
+          type="button"
+          class="remove-btn"
+          (click)="removeConnection(connection)">
+
+          Remove Connection
+
+        </button>
+
+
       </div>
+
+    </div>
+
+
+    <!-- EMPTY STATE -->
+
+    <div
+      class="empty-state"
+      *ngIf="connections.length === 0">
+
+      <h2>
+        No connections yet
+      </h2>
+
+      <p>
+        Find people and send a connection request
+        to start building your SkillSwap network.
+      </p>
+
+
+      <button
+        type="button"
+        routerLink="/find-skills">
+
+        Find People
+
+      </button>
 
     </div>
 

@@ -1,0 +1,144 @@
+<div class="chat-page">
+
+  <!-- HEADER -->
+
+  <header class="chat-header">
+
+    <div class="logo">
+      Skill<span>Swap</span>
+    </div>
+
+    <a routerLink="/connections">
+      ← Connections
+    </a>
+
+  </header>
+
+
+  <!-- CHAT CONTAINER -->
+
+  <main class="chat-content">
+
+    <div class="chat-card">
+
+
+      <!-- CHAT HEADER -->
+
+      <div class="chat-title">
+
+        <div class="chat-avatar">
+
+          {{ connectionName.charAt(0).toUpperCase() }}
+
+        </div>
+
+
+        <div>
+
+          <h1>
+            {{ connectionName }}
+          </h1>
+
+          <span>
+            SkillSwap Connection
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- MESSAGES -->
+
+      <div class="messages-area">
+
+
+        <!-- LOADING -->
+
+        <div
+          class="loading"
+          *ngIf="loading">
+
+          Loading conversation...
+
+        </div>
+
+
+        <!-- EMPTY CHAT -->
+
+        <div
+          class="empty-chat"
+          *ngIf="
+            !loading &&
+            messages.length === 0
+          ">
+
+          <h2>
+            Start a conversation 👋
+          </h2>
+
+          <p>
+            Send a message to
+            {{ connectionName }}.
+          </p>
+
+        </div>
+
+
+        <!-- MESSAGE LIST -->
+
+        <div
+          class="message-wrapper"
+          *ngFor="let message of messages"
+          [class.my-message]="isMyMessage(message)"
+          [class.their-message]="!isMyMessage(message)">
+
+          <div class="message-bubble">
+
+            <p>
+              {{ message.text }}
+            </p>
+
+            <span class="message-time">
+
+              {{ message.createdAt | date:'short' }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- MESSAGE INPUT -->
+
+      <div class="message-input-area">
+
+        <input
+          type="text"
+          [(ngModel)]="newMessage"
+          (keydown)="handleEnter($event)"
+          placeholder="Type your message..."
+          autocomplete="off">
+
+
+        <button
+          type="button"
+          (click)="sendMessage()"
+          [disabled]="!newMessage.trim()">
+
+          Send
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+</div>

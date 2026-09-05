@@ -9,7 +9,8 @@
         Skill<span>Swap</span>
       </div>
 
-      <p>Already have an account?
+      <p>
+        Already have an account?
         <a routerLink="/login">Login</a>
       </p>
 
@@ -69,13 +70,12 @@
           </label>
 
           <input
-  type="text"
-  id="name"
-  name="name"
-  [(ngModel)]="user.name"
-  placeholder="Enter your full name"
-  required
-
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="user.name"
+            placeholder="Enter your full name"
+            required
           >
 
         </div>
@@ -89,13 +89,33 @@
           </label>
 
           <input
-  type="email"
-  id="email"
-  name="email"
-  [(ngModel)]="user.email"
-  placeholder="Enter your email"
-  required
->
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+
+        <!-- Password -->
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="user.password"
+            placeholder="Create a password"
+            minlength="6"
+            required
+          >
 
         </div>
 
@@ -106,15 +126,15 @@
           <label for="phone">
             Phone Number
           </label>
-<input
-  type="tel"
-  id="phone"
-  name="phone"
-  [(ngModel)]="user.phone"
-  placeholder="Enter your phone number"
-  required
->
-          
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            [(ngModel)]="user.phone"
+            placeholder="Enter your phone number"
+            required
+          >
 
         </div>
 
@@ -127,12 +147,12 @@
           </label>
 
           <input
-  type="text"
-  id="location"
-  name="location"
-  [(ngModel)]="user.location"
-  placeholder="City, State"
->
+            type="text"
+            id="location"
+            name="location"
+            [(ngModel)]="user.location"
+            placeholder="City, State"
+          >
 
         </div>
 
@@ -145,28 +165,24 @@
           </label>
 
           <textarea
-  id="bio"
-  name="bio"
-  [(ngModel)]="user.bio"
-  rows="4"
-  placeholder="Tell other SkillSwap users about yourself..."
-></textarea>
+            id="bio"
+            name="bio"
+            [(ngModel)]="user.bio"
+            rows="4"
+            placeholder="Tell other SkillSwap users about yourself..."
+          ></textarea>
 
         </div>
+
+
         <!-- Continue -->
-<button
-  type="submit"
-  class="continue-btn">
-  Continue to Education →
-</button>
+        <button
+          type="submit"
+          class="continue-btn">
+          Continue to Education →
+        </button>
 
-</form>
-
-
-
-         
-
-    
+      </form>
 
     </div>
 
